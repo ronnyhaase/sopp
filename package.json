@@ -1,0 +1,20 @@
+{
+	"name"           : "sopp"
+	, "version"      : "0.2.0"
+	, "author"       : "Ronny Haase <ronhaase@gmail.com>"
+	, "contributors" : []
+	, "description"  : "Option parsing library for Node.js"
+	, "keywords"     : ["parser", "parsing", "argument", "options", "cli", "nopt"]
+	, "homepage"     : "http://github.com/ronnyhaase/sopp"
+
+	, "license"      : {
+		"type"  : "Apache-2.0"
+		, "url" : "http://www.apache.org/licenses/LICENSE-2.0"
+	}
+	, "repository"   : {
+		"type"  : "git"
+		, "url" : "https://github.com/ronnyhaase/sopp.git"
+	}
+
+	, "main"         : "./lib/sopp"
+}
