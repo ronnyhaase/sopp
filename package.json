@@ -21,6 +21,6 @@
 	}
 	, "main"            : "./lib/sopp"
 	, "scripts"         : {
-		"test" : "node ./test/run.js"
+		"test" : "./node_modules/mocha/bin/mocha ./test/run.js"
 	}
 }
