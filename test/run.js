@@ -8,6 +8,14 @@ describe('sopp', function() {
 		should.equal(false, sopp())
 	})
 
+	it('should return a minimal parsed object if settings are an empty array', function() {
+		var parsed = sopp([])
+
+		parsed.should.be.a('object')
+		parsed.should.have.property('illegal_')
+		parsed.should.have.property('files_')
+	})
+
 	it('should throw an exception if a short-hand argument is assigned for more than 1 option', function() {
 		(function() {
 			var settings = [
