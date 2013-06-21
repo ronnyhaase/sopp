@@ -60,4 +60,15 @@ describe('sopp', function() {
 			sopp(settings)
 		}).should.throw()
 	})
+
+	it('should contain full short-hand commands if combined in one argument', function() {
+		var settings = [
+			{ name: 'aA', type: Boolean, short: 'a', long: '--A' }
+			, { name: 'aB', type: Boolean, short: 'b', long: '--B' }
+			, { name: 'aC', type: Boolean, short: 'c', long: '--C' }
+		]
+		var args = ['0','0','-abcxyz','--X','--Y','--Z']
+
+		console.log( sopp(settings,args) )
+	})
 })
