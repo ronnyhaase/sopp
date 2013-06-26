@@ -19,9 +19,9 @@ describe('sopp', function() {
 	it('should throw an exception if a short-hand argument is assigned for more than 1 option', function() {
 		(function() {
 			var settings = [
-				{ name: 'a', short: 'x'  }
-				, { name: 'b', short: 'x' }
-			]
+					{ name: 'a', short: 'x'  }
+					, { name: 'b', short: 'x' }
+				]
 			sopp(settings)
 		}).should.throw()
 	})
@@ -29,33 +29,44 @@ describe('sopp', function() {
 	it('should throw an exception if a long-hand argument is assigned for more than 1 option', function() {
 		(function() {
 			var settings = [
-				{ name: 'scren', long: '--scream' }
-				, { name: 'yell', long: '--scream' }
-			]
+					{ name: 'scream', long: '--scream' }
+					, { name: 'yell', long: '--scream' }
+				]
 
 			sopp(settings)
 		}).should.throw()
 	})
 
+	it('should not cause trouble to not assign a long and/or short for options')
+
 	it('should accept type Boolean, String and Array', function() {
 		(function() {
 			var settings = [
-				{ name: 'string', type: String }
-				, { name: 'bool', type: Boolean }
-				, { name: 'array', type: Array }
-			]
+					{ name: 'string', type: String }
+					, { name: 'bool', type: Boolean }
+					, { name: 'array', type: Array }
+				]
 
 			sopp(settings)
 		}).should.not.throw()
 	})
 
+	it('should default to type Boolean', function() {
+		var settings = [
+				{ name: 'aA', short: 'a', long: '--aA' }
+			]
+			, parsed = sopp(settings,[0,0,'-a'])
+
+		parsed.should.have.property('aA',true)
+	})
+
 	it('should throw an exception if a unsupported type is assigned', function() {
 		(function() {
 			var settings = [
-				{ name: 'string', type: String }
-				, { name: 'bool', type: Boolean }
-				, { name: 'number', type: Number }
-			]
+					{ name: 'string', type: String }
+					, { name: 'bool', type: Boolean }
+					, { name: 'number', type: Number }
+				]
 
 			sopp(settings)
 		}).should.throw()
@@ -63,11 +74,11 @@ describe('sopp', function() {
 
 	it('should contain full short-hand commands if combined in one argument', function() {
 		var settings = [
-			{ name: 'aA', type: Boolean, short: 'a', long: '--A' }
-			, { name: 'aB', type: Boolean, short: 'b', long: '--B' }
-			, { name: 'aC', type: Boolean, short: 'c', long: '--C' }
-		]
-		var args = ['0','0','-abcxyz','--X','--Y','--Z']
+				{ name: 'aA', type: Boolean, short: 'a', long: '--A' }
+				, { name: 'aB', type: Boolean, short: 'b', long: '--B' }
+				, { name: 'aC', type: Boolean, short: 'c', long: '--C' }
+			]
+			, args = ['0','0','-abcxyz','--X','--Y','--Z']
 
 		console.log( sopp(settings,args) )
 	})
